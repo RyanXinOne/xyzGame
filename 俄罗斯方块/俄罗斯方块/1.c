@@ -4,11 +4,11 @@
 #include<stdlib.h>
 #include<conio.h>
 
-enum { false0, one, two, three, four, false5 }status;         //·½¿é×´Ì¬
-enum { I = 1, Lleft, Lright, O, Zleft, Zright, T }Box;       //·½¿éÑ¡Ôñ
-int grid[12][22];             //µ¥Ôª·½¸ñ×´Ì¬Êı×é
-int colour;                  //¹â±êÑÕÉ«
-typedef struct {        //Íæ¼ÒĞÅÏ¢
+enum { false0, one, two, three, four, false5 }status;         //æ–¹å—çŠ¶æ€
+enum { I = 1, Lleft, Lright, O, Zleft, Zright, T }Box;       //æ–¹å—é€‰æ‹©
+int grid[12][22];             //å•å…ƒæ–¹æ ¼çŠ¶æ€æ•°ç»„
+int colour;                  //å…‰æ ‡é¢œè‰²
+typedef struct {        //ç©å®¶ä¿¡æ¯
 	char name[11];
 	unsigned score;
 	char date[7];
@@ -16,7 +16,7 @@ typedef struct {        //Íæ¼ÒĞÅÏ¢
 }player;
 void gamecircle();
 
-//¹â±ê
+//å…‰æ ‡
 void pos(int x, int y)
 {
 	COORD POS;
@@ -26,28 +26,28 @@ void pos(int x, int y)
 	SetConsoleCursorPosition(hOut, POS);
 }
 
-void HideCursor()                      //Òş²Ø¹â±ê
+void HideCursor()                      //éšè—å…‰æ ‡
 {
 	CONSOLE_CURSOR_INFO cursor_info = { 1, 0 };
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
 }
 
-void DisplayCursor()                 //ÏÔÊ¾¹â±ê
+void DisplayCursor()                 //æ˜¾ç¤ºå…‰æ ‡
 {
 	CONSOLE_CURSOR_INFO cursor_info = { 1, 1 };
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
 }
 
-int color(short x)	//×Ô¶¨Òåº¯¸ù¾İ²ÎÊı¸Ä±äÑÕÉ« 
+int color(short x)	//è‡ªå®šä¹‰å‡½æ ¹æ®å‚æ•°æ”¹å˜é¢œè‰² 
 {
-	if (x >= 0 && x <= 15)//²ÎÊıÔÚ0-15µÄ·¶Î§ÑÕÉ«
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), x);	//Ö»ÓĞÒ»¸ö²ÎÊı£¬¸Ä±ä×ÖÌåÑÕÉ« 
-	else//Ä¬ÈÏµÄÑÕÉ«°×É«
+	if (x >= 0 && x <= 15)//å‚æ•°åœ¨0-15çš„èŒƒå›´é¢œè‰²
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), x);	//åªæœ‰ä¸€ä¸ªå‚æ•°ï¼Œæ”¹å˜å­—ä½“é¢œè‰² 
+	else//é»˜è®¤çš„é¢œè‰²ç™½è‰²
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	return x;
 }
 
-void pause()    //ÔİÍ£ÓÎÏ·
+void pause()    //æš‚åœæ¸¸æˆ
 {
 	while (1)
 	{
@@ -59,25 +59,25 @@ void pause()    //ÔİÍ£ÓÎÏ·
 	}
 }
 
-//»¶Ó­
+//æ¬¢è¿
 void welcome()
 {
 	pos(5, 13);
-	printf("»¶Ó­À´µ½¶íÂŞË¹·½¿év0.9");
+	printf("æ¬¢è¿æ¥åˆ°ä¿„ç½—æ–¯æ–¹å—v0.9");
 	pos(15, 12);
-	printf("×÷Õß£ºxyz\n\n");
-	printf("Çë°´P¼ü¼ÌĞø...");
+	printf("ä½œè€…ï¼šxyz\n\n");
+	printf("è¯·æŒ‰Pé”®ç»§ç»­...");
 	pause();
 }
 
-void swapinfo(player* x, player* y)      //½»»»·ÖÊıĞÅÏ¢ÒÔ¹©ÅÅÃû
+void swapinfo(player* x, player* y)      //äº¤æ¢åˆ†æ•°ä¿¡æ¯ä»¥ä¾›æ’å
 {
 	player temp = *x;
 	*x = *y;
 	*y = temp;
 }
 
-//½áÊø
+//ç»“æŸ
 void endGame(int score)
 {
 	player user;
@@ -94,10 +94,10 @@ void endGame(int score)
 
 	pos(30, 18);
 	color(-1);
-	printf("ÄúµÄ×îÖÕµÃ·Ö£º%d\n", score);
+	printf("æ‚¨çš„æœ€ç»ˆå¾—åˆ†ï¼š%d\n", score);
 	pos(30, 16);
 	DisplayCursor();
-	printf("ÄúµÄ´óÃû(Ó¢ÎÄÊäÈë)£º");
+	printf("æ‚¨çš„å¤§å(è‹±æ–‡è¾“å…¥)ï¼š");
 	scanf("%s", &user.name);
 
 	fp = fopen("2.bin", "a");
@@ -108,7 +108,7 @@ void endGame(int score)
 	fprintf(fp, "%s %u %d%02d%02d %02d%02d%02d\n", user.name, score, timer->tm_year - 100, timer->tm_mon + 1, timer->tm_mday, timer->tm_hour, timer->tm_min, timer->tm_sec);
 	fclose(fp);
 
-	//°´µÃ·ÖÅÅÃûÖØĞÂĞ´ÈërankÎÄ¼ş
+	//æŒ‰å¾—åˆ†æ’åé‡æ–°å†™å…¥rankæ–‡ä»¶
 	fp = fopen("2.bin", "r");
 	n = 0;
 	while (fscanf(fp, "%s%u%s%s", &grp[n].name, &grp[n].score, &grp[n].date, &grp[n].time) == 4)
@@ -137,11 +137,11 @@ void endGame(int score)
 	system("pause");
 	system("cls");
 
-	//ÏÔÊ¾ÅÅĞĞ°ñ
+	//æ˜¾ç¤ºæ’è¡Œæ¦œ
 	pos(29, 19);
-	printf("ÅÅĞĞ°ñ");
+	printf("æ’è¡Œæ¦œ");
 	pos(10, 17);
-	printf("Ãû´Î      ´óÃû      µÃ·Ö      ÈÕÆÚ      Ê±¼ä");
+	printf("åæ¬¡      å¤§å      å¾—åˆ†      æ—¥æœŸ      æ—¶é—´");
 	fp = fopen("2.bin", "r");
 	n = 0;
 	while (fscanf(fp, "%s%u%s%s", &grp[n].name, &grp[n].score, &grp[n].date, &grp[n].time) == 4)
@@ -164,12 +164,12 @@ void endGame(int score)
 	putchar('\n');
 	putchar('\n');
 	if (is == 1)
-		printf("¹§Ï²Äã£¬µ±Ç°ÅÅÃûµÚ%d£¡£¡\n", num);
+		printf("æ­å–œä½ ï¼Œå½“å‰æ’åç¬¬%dï¼ï¼\n", num);
 	else
-		puts("ºÜ¿ÉÏ§£¬Õâ´ÎÃ»ÓĞÉÏ°ñ£¬ºÍÉßÉß¼ÌĞøÅ¬Á¦°É£¡");
+		puts("å¾ˆå¯æƒœï¼Œè¿™æ¬¡æ²¡æœ‰ä¸Šæ¦œï¼Œå’Œè›‡è›‡ç»§ç»­åŠªåŠ›å§ï¼");
 
 	putchar('\n');
-	printf("Òª¼ÌĞøÓÎÏ·Âğ£¿¼ÌĞø----\'0\'£¬ÍË³ö----\'9\'£º"); 
+	printf("è¦ç»§ç»­æ¸¸æˆå—ï¼Ÿç»§ç»­----\'0\'ï¼Œé€€å‡º----\'9\'ï¼š");
 	scanf("%d", &con);
 
 	if (con == 0)
@@ -178,7 +178,7 @@ void endGame(int score)
 		exit(0);
 }
 
-//´òÓ¡±ß¿ò
+//æ‰“å°è¾¹æ¡†
 void printboundray()
 {
 	int i;
@@ -186,44 +186,44 @@ void printboundray()
 	for (i = 0; i <= 22; i += 2)
 	{
 		pos(i, 21);
-		printf("¡ö");
+		printf("â– ");
 		pos(i, 0);
-		printf("¡ö");
+		printf("â– ");
 	}
 
 	for (i = 0; i <= 21; i++)
 	{
 		pos(0, 21 - i);
-		printf("¡ö");
+		printf("â– ");
 		pos(22, 21 - i);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
-//IĞÍ·½¿é
+//Iå‹æ–¹å—
 void boxI(int x, int y)
 {
 	if (status == one || status == three)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 2);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two || status == four)
 	{
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 4, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -253,52 +253,52 @@ void ClboxI(int x, int y)
 	}
 }
 
-//L×óĞÍ·½¿é
+//Lå·¦å‹æ–¹å—
 void boxLleft(int x, int y)
 {
 	if (status == one)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two)
 	{
 		pos(x - 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == three)
 	{
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == four)
 	{
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -350,52 +350,52 @@ void ClboxLleft(int x, int y)
 	}
 }
 
-//LÓÒĞÍ·½¿é
+//Lå³å‹æ–¹å—
 void boxLright(int x, int y)
 {
 	if (status == one)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two)
 	{
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == three)
 	{
 		pos(x - 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == four)
 	{
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -447,19 +447,19 @@ void ClboxLright(int x, int y)
 	}
 }
 
-//OĞÍ·½¿é
+//Oå‹æ–¹å—
 void boxO(int x, int y)
 {
 	if (status == one || status == two || status == three || status == four)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -478,30 +478,30 @@ void ClboxO(int x, int y)
 	}
 }
 
-//Z×óĞÍ·½¿é
+//Zå·¦å‹æ–¹å—
 void boxZleft(int x, int y)
 {
 	if (status == one || status == three)
 	{
 		pos(x - 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two || status == four)
 	{
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -531,30 +531,30 @@ void ClboxZleft(int x, int y)
 	}
 }
 
-//ZÓÒĞÍ·½¿é
+//Zå³å‹æ–¹å—
 void boxZright(int x, int y)
 {
 	if (status == one || status == three)
 	{
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two || status == four)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -584,52 +584,52 @@ void ClboxZright(int x, int y)
 	}
 }
 
-//TĞÍ·½¿é
+//Tå‹æ–¹å—
 void boxT(int x, int y)
 {
 	if (status == one)
 	{
 		pos(x - 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == two)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == three)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x - 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 	}
 	else if (status == four)
 	{
 		pos(x, y + 1);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x + 2, y);
-		printf("¡ö");
+		printf("â– ");
 		pos(x, y - 1);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -681,7 +681,7 @@ void ClboxT(int x, int y)
 	}
 }
 
-//Ëæ»ú³öÏÖ·½¿é
+//éšæœºå‡ºç°æ–¹å—
 void randBox(int x, int y)
 {
 	srand((unsigned)time(NULL));
@@ -725,16 +725,16 @@ void randBox(int x, int y)
 	}
 }
 
-//·½¿éÏÂÂä
+//æ–¹å—ä¸‹è½
 int move(int x, int y)
 {
 	if (Box == I)
 	{
 		if (status == one || status == three)
 		{
-			if (grid[x / 2][y - 3] != 0)                 //¼ì²éÏÂÒ»¸ñÊÇ·ñÓĞ·½¸ñ
+			if (grid[x / 2][y - 3] != 0)                 //æ£€æŸ¥ä¸‹ä¸€æ ¼æ˜¯å¦æœ‰æ–¹æ ¼
 			{
-				grid[x / 2][y + 1] = colour;                     //¸üĞÂ·½¸ñ¼ÇÂ¼
+				grid[x / 2][y + 1] = colour;                     //æ›´æ–°æ–¹æ ¼è®°å½•
 				grid[x / 2][y] = colour;
 				grid[x / 2][y - 1] = colour;
 				grid[x / 2][y - 2] = colour;
@@ -981,13 +981,13 @@ int move(int x, int y)
 	}
 }
 
-int lmove(int x, int y)                                    //·½¿é×óÒÆ
+int lmove(int x, int y)                                    //æ–¹å—å·¦ç§»
 {
 	if (Box == I)
 	{
 		if (status == one || status == three)
 		{
-			if (grid[x / 2 - 1][y + 1] != 0 || grid[x / 2 - 1][y] != 0 || grid[x / 2 - 1][y - 1] != 0 || grid[x / 2 - 1][y - 2] != 0)                 //¼ì²é×ó·½ÊÇ·ñÓĞ·½¸ñ
+			if (grid[x / 2 - 1][y + 1] != 0 || grid[x / 2 - 1][y] != 0 || grid[x / 2 - 1][y - 1] != 0 || grid[x / 2 - 1][y - 2] != 0)                 //æ£€æŸ¥å·¦æ–¹æ˜¯å¦æœ‰æ–¹æ ¼
 			{
 				return 0;
 			}
@@ -1160,13 +1160,13 @@ int lmove(int x, int y)                                    //·½¿é×óÒÆ
 	}
 }
 
-int rmove(int x, int y)                                    //·½¿é×óÒÆ
+int rmove(int x, int y)                                    //æ–¹å—å·¦ç§»
 {
 	if (Box == I)
 	{
 		if (status == one || status == three)
 		{
-			if (grid[x / 2 + 1][y + 1] != 0 || grid[x / 2 + 1][y] != 0 || grid[x / 2 + 1][y - 1] != 0 || grid[x / 2 + 1][y - 2] != 0)                 //¼ì²éÓÒ·½ÊÇ·ñÓĞ·½¸ñ
+			if (grid[x / 2 + 1][y + 1] != 0 || grid[x / 2 + 1][y] != 0 || grid[x / 2 + 1][y - 1] != 0 || grid[x / 2 + 1][y - 2] != 0)                 //æ£€æŸ¥å³æ–¹æ˜¯å¦æœ‰æ–¹æ ¼
 			{
 				return 0;
 			}
@@ -1339,7 +1339,7 @@ int rmove(int x, int y)                                    //·½¿é×óÒÆ
 	}
 }
 
-//·½¿é×´Ì¬¸Ä±ä
+//æ–¹å—çŠ¶æ€æ”¹å˜
 int transform(int x, int y)
 {
 	status++;
@@ -1636,7 +1636,7 @@ int transform(int x, int y)
 	}
 }
 
-//ºËĞÄ¿ØÖÆ
+//æ ¸å¿ƒæ§åˆ¶
 void core()
 {
 	int j;
@@ -1652,7 +1652,7 @@ void core()
 
 	while (1)
 	{
-		if (level == 1 && score>=100)             //ËäµÃ·Ö¼ÓËÙ
+		if (level == 1 && score >= 100)             //è™½å¾—åˆ†åŠ é€Ÿ
 		{
 			level++;
 			if (gamespeed > 1)
@@ -1684,15 +1684,15 @@ void core()
 		}
 		pos(30, 18);
 		color(15);
-		printf("µÃ·Ö£º%d", score);
+		printf("å¾—åˆ†ï¼š%d", score);
 		x = 10;
 		y = 19;
-		if (grid[x / 2][y] != 0)           //ÅĞ¶ÏÓÎÏ·½áÊø
+		if (grid[x / 2][y] != 0)           //åˆ¤æ–­æ¸¸æˆç»“æŸ
 			endGame(score);
 		randBox(x, y);
 		speed = gamespeed;
 		tmp = speed;
-		Sleep(100*gamespeed);
+		Sleep(100 * gamespeed);
 
 		while (1)
 		{
@@ -1702,7 +1702,7 @@ void core()
 					break;
 				y--;
 			}
-			
+
 			speed = tmp;
 
 			interval++;
@@ -1768,7 +1768,7 @@ void core()
 				Sleep(100);
 		}
 
-		//¼ì²éÊÇ·ñ¿ÉÏû³ı£¬ÈôÊÇ£¬ÔòÏû³ıºóÏÂÒÆÒ»¸ñ
+		//æ£€æŸ¥æ˜¯å¦å¯æ¶ˆé™¤ï¼Œè‹¥æ˜¯ï¼Œåˆ™æ¶ˆé™¤åä¸‹ç§»ä¸€æ ¼
 		for (j = 1; j <= 20; j++)
 		{
 			if (grid[1][j] != 0 && grid[2][j] != 0 && grid[3][j] != 0 && grid[4][j] != 0 && grid[5][j] != 0 && grid[6][j] != 0 && grid[7][j] != 0 && grid[8][j] != 0 && grid[9][j] != 0 && grid[10][j] != 0)
@@ -1799,7 +1799,7 @@ void core()
 								else if (grid[a][b] == 14)
 									color(14);
 								pos(2 * a, b - 1);
-								printf("¡ö");
+								printf("â– ");
 								grid[a][b - 1] = grid[a][b];
 							}
 							else if (grid[a][b] == 0)
@@ -1823,7 +1823,7 @@ void core()
 	}
 }
 
-//ÓÎÏ·Ñ­»·
+//æ¸¸æˆå¾ªç¯
 void gamecircle()
 {
 	HideCursor();

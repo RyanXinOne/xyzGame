@@ -10,7 +10,7 @@ int aiOppo(const int x[3][3], const int y[3][3], int* chan);
 int aiin(const int x[3][3], const int y[3][3], int* chan);
 
 
-void pos(int x, int y)                    //ÉèÖÃ¹â±êÎ»ÖÃ
+void pos(int x, int y)                    //è®¾ç½®å…‰æ ‡ä½ç½®
 {
 	COORD POS;
 	POS.X = x;
@@ -72,7 +72,7 @@ int aiOppo(const int x[3][3], const int y[3][3], int* chan)
 			{
 				a[i][j] = 1;
 
-				for (q = 0; q <= 2; q++)                                             //Ê¤ÀûÅĞ¶Ï
+				for (q = 0; q <= 2; q++)                                             //èƒœåˆ©åˆ¤æ–­
 				{
 					if (a[0][q] == 1 && a[1][q] == 1 && a[2][q] == 1)
 						(*chan)--;
@@ -89,7 +89,7 @@ int aiOppo(const int x[3][3], const int y[3][3], int* chan)
 				if (a[2][0] == 1 && a[1][1] == 1 && a[0][2] == 1)
 					(*chan)--;
 
-				tie = 0;                           //Æ½¾ÖÅĞ¶Ï
+				tie = 0;                           //å¹³å±€åˆ¤æ–­
 				for (q = 0; q <= 2; q++)
 				{
 					for (p = 0; p <= 2; p++)
@@ -139,7 +139,7 @@ int aiin(const int x[3][3], const int y[3][3], int* chan)
 			{
 				a[i][j] = 1;
 
-				for (q = 0; q <= 2; q++)                                             //Ê¤ÀûÅĞ¶Ï
+				for (q = 0; q <= 2; q++)                                             //èƒœåˆ©åˆ¤æ–­
 				{
 					if (a[0][q] == 1 && a[1][q] == 1 && a[2][q] == 1)
 					{
@@ -164,7 +164,7 @@ int aiin(const int x[3][3], const int y[3][3], int* chan)
 					(*chan)++;
 				}
 
-				tie = 0;                           //Æ½¾ÖÅĞ¶Ï
+				tie = 0;                           //å¹³å±€åˆ¤æ–­
 				for (q = 0; q <= 2; q++)
 				{
 					for (p = 0; p <= 2; p++)
@@ -223,7 +223,7 @@ int aiout(const int x[3][3], const int y[3][3])
 				a[i][j] = 1;
 
 
-				for (q = 0; q <= 2; q++)                                             //aiÊ¤ÀûÅĞ¶Ï
+				for (q = 0; q <= 2; q++)                                             //aièƒœåˆ©åˆ¤æ–­
 				{
 					if (a[0][q] == 1 && a[1][q] == 1 && a[2][q] == 1)
 					{
@@ -263,7 +263,7 @@ int aiout(const int x[3][3], const int y[3][3])
 			{
 				b[i][j] = 1;
 
-				for (q = 0; q <= 2; q++)                                             //¶ÔÊÖÊ¤ÀûÅĞ¶Ï
+				for (q = 0; q <= 2; q++)                                             //å¯¹æ‰‹èƒœåˆ©åˆ¤æ–­
 				{
 					if (b[0][q] == 1 && b[1][q] == 1 && b[2][q] == 1)
 					{
@@ -305,7 +305,7 @@ int aiout(const int x[3][3], const int y[3][3])
 			{
 				a[i][j] = 1;
 
-				tie = 0;                           //Æ½¾ÖÅĞ¶Ï
+				tie = 0;                           //å¹³å±€åˆ¤æ–­
 				for (q = 0; q <= 2; q++)
 				{
 					for (p = 0; p <= 2; p++)
@@ -329,7 +329,7 @@ int aiout(const int x[3][3], const int y[3][3])
 	}
 
 	chance[0] = INT_MIN;
-	POS = 0;                             //ÕÒ³öÊ¤ÂÊ×î´óÎ»ÖÃ
+	POS = 0;                             //æ‰¾å‡ºèƒœç‡æœ€å¤§ä½ç½®
 	for (j = 0; j <= 2; j++)
 	{
 		for (i = 0; i <= 2; i++)
@@ -341,7 +341,7 @@ int aiout(const int x[3][3], const int y[3][3])
 		}
 	}
 
-	z = 0;                             //ÈôÊ¤ÂÊÏàÍ¬£¬ÔòËæ»úÑ¡ÔñÒ»¸öÎ»ÖÃ
+	z = 0;                             //è‹¥èƒœç‡ç›¸åŒï¼Œåˆ™éšæœºé€‰æ‹©ä¸€ä¸ªä½ç½®
 	for (j = 0; j <= 2; j++)
 	{
 		for (i = 0; i <= 2; i++)
@@ -385,8 +385,8 @@ void stdbattle()
 	frame();
 
 	pos(0, 12);
-	puts("´Ó×óÉÏ½Ç¿ªÊ¼Ã¿¸ö¸ñ×Ó·Ö±ğÓÃÊı×Ö1-9À´±íÊ¾");
-	puts("ÇëÑ¡Ôñ×ø±ê¡£");
+	puts("ä»å·¦ä¸Šè§’å¼€å§‹æ¯ä¸ªæ ¼å­åˆ†åˆ«ç”¨æ•°å­—1-9æ¥è¡¨ç¤º");
+	puts("è¯·é€‰æ‹©åæ ‡ã€‚");
 
 	while (end == 0)
 	{
@@ -398,13 +398,13 @@ void stdbattle()
 		if (player == 0)
 		{
 			printf("       \r");
-			printf("Íæ¼Ò1:");
+			printf("ç©å®¶1:");
 			scanf("%d", &i);
 		}
 		else
 		{
 			printf("       \r");
-			printf("Íæ¼Ò2:");
+			printf("ç©å®¶2:");
 			scanf("%d", &i);
 		}
 
@@ -415,7 +415,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][0] = 1;
 				}
 				else
@@ -436,7 +436,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][0] = 1;
 				}
 				else
@@ -457,7 +457,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][0] = 1;
 				}
 				else
@@ -478,7 +478,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][1] = 1;
 				}
 				else
@@ -499,7 +499,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][1] = 1;
 				}
 				else
@@ -520,7 +520,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][1] = 1;
 				}
 				else
@@ -541,7 +541,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][2] = 1;
 				}
 				else
@@ -562,7 +562,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][2] = 1;
 				}
 				else
@@ -583,7 +583,7 @@ void stdbattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][2] = 1;
 				}
 				else
@@ -601,7 +601,7 @@ void stdbattle()
 			break;
 		}
 
-		tie = 0;                           //Æ½¾ÖÅĞ¶Ï
+		tie = 0;                           //å¹³å±€åˆ¤æ–­
 		for (j = 0; j <= 2; j++)
 		{
 			for (i = 0; i <= 2; i++)
@@ -613,7 +613,7 @@ void stdbattle()
 		if (tie == 9)
 			end = 2;
 
-		for (j = 0; j <= 2; j++)                                             //Ê¤ÀûÅĞ¶Ï
+		for (j = 0; j <= 2; j++)                                             //èƒœåˆ©åˆ¤æ–­
 		{
 			if (a[0][j] == 1 && a[1][j] == 1 && a[2][j] == 1)
 				end = 1;
@@ -652,14 +652,14 @@ void stdbattle()
 	{
 		pos(0, 14);
 		putchar('\n');
-		printf("¹§Ï²Íæ¼Ò%d»ñµÃÁËÊ¤Àû£¡£¡£¡", player + 1);
+		printf("æ­å–œç©å®¶%dè·å¾—äº†èƒœåˆ©ï¼ï¼ï¼", player + 1);
 		putchar('\n');
 	}
 	else if (end == 2)
 	{
 		pos(0, 14);
 		putchar('\n');
-		printf("\aÆ½¾Ö£¡£¡£¡");
+		printf("\aå¹³å±€ï¼ï¼ï¼");
 		putchar('\n');
 	}
 }
@@ -680,13 +680,13 @@ void aibattle()
 	do {
 		pos(0, 12);
 		printf("                       \r");
-		printf("ÎÒÏÈ---1£¬¶ÔÊÖÏÈ---2£º");
+		printf("æˆ‘å…ˆ---1ï¼Œå¯¹æ‰‹å…ˆ---2ï¼š");
 		scanf("%d", &who);
 	} while (who != 1 && who != 2);
 
 	pos(0, 12);
-	puts("´Ó×óÉÏ½Ç¿ªÊ¼Ã¿¸ö¸ñ×Ó·Ö±ğÓÃÊı×Ö1-9À´±íÊ¾");
-	puts("ÇëÑ¡Ôñ×ø±ê¡£");
+	puts("ä»å·¦ä¸Šè§’å¼€å§‹æ¯ä¸ªæ ¼å­åˆ†åˆ«ç”¨æ•°å­—1-9æ¥è¡¨ç¤º");
+	puts("è¯·é€‰æ‹©åæ ‡ã€‚");
 
 	while (end == 0)
 	{
@@ -700,14 +700,14 @@ void aibattle()
 			if (player == 0)
 			{
 				printf("      \r");
-				printf("Íæ¼Ò:");
+				printf("ç©å®¶:");
 				scanf("%d", &i);
 			}
 			else
 			{
 				i = aiout(b, a);
 				printf("      \r");
-				printf("µçÄÔ:");
+				printf("ç”µè„‘:");
 				Sleep(500);
 				printf("%d", i);
 				Sleep(1000);
@@ -719,7 +719,7 @@ void aibattle()
 			{
 				i = aiout(a, b);
 				printf("      \r");
-				printf("µçÄÔ:");
+				printf("ç”µè„‘:");
 				Sleep(500);
 				printf("%d", i);
 				Sleep(1000);
@@ -727,7 +727,7 @@ void aibattle()
 			else
 			{
 				printf("      \r");
-				printf("Íæ¼Ò:");
+				printf("ç©å®¶:");
 				scanf("%d", &i);
 			}
 		}
@@ -739,7 +739,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][0] = 1;
 				}
 				else
@@ -760,7 +760,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][0] = 1;
 				}
 				else
@@ -781,7 +781,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][0] = 1;
 				}
 				else
@@ -802,7 +802,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][1] = 1;
 				}
 				else
@@ -823,7 +823,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][1] = 1;
 				}
 				else
@@ -844,7 +844,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][1] = 1;
 				}
 				else
@@ -865,7 +865,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[0][2] = 1;
 				}
 				else
@@ -886,7 +886,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[1][2] = 1;
 				}
 				else
@@ -907,7 +907,7 @@ void aibattle()
 			{
 				if (player == 0)
 				{
-					printf("¡ğ");
+					printf("â—‹");
 					a[2][2] = 1;
 				}
 				else
@@ -925,7 +925,7 @@ void aibattle()
 			break;
 		}
 
-		tie = 0;                           //Æ½¾ÖÅĞ¶Ï
+		tie = 0;                           //å¹³å±€åˆ¤æ–­
 		for (j = 0; j <= 2; j++)
 		{
 			for (i = 0; i <= 2; i++)
@@ -937,7 +937,7 @@ void aibattle()
 		if (tie == 9)
 			end = 2;
 
-		for (j = 0; j <= 2; j++)                                             //Ê¤ÀûÅĞ¶Ï
+		for (j = 0; j <= 2; j++)                                             //èƒœåˆ©åˆ¤æ–­
 		{
 			if (a[0][j] == 1 && a[1][j] == 1 && a[2][j] == 1)
 				end = 1;
@@ -979,9 +979,9 @@ void aibattle()
 			pos(0, 14);
 			putchar('\n');
 			if (player == 0)
-				printf("¹§Ï²Äã£¬ÄãÓ®ÁË£¡£¡£¡");
+				printf("æ­å–œä½ ï¼Œä½ èµ¢äº†ï¼ï¼ï¼");
 			else if (player == 1)
-				printf("\aºÜ¿ÉÏ§£¬ÄãÊäÁË£¡£¡£¡");
+				printf("\aå¾ˆå¯æƒœï¼Œä½ è¾“äº†ï¼ï¼ï¼");
 			putchar('\n');
 		}
 		else if (who == 2)
@@ -989,9 +989,9 @@ void aibattle()
 			pos(0, 14);
 			putchar('\n');
 			if (player == 0)
-				printf("\aºÜ¿ÉÏ§£¬ÄãÊäÁË£¡£¡£¡");
+				printf("\aå¾ˆå¯æƒœï¼Œä½ è¾“äº†ï¼ï¼ï¼");
 			else if (player == 1)
-				printf("¹§Ï²Äã£¬ÄãÓ®ÁË£¡£¡£¡");
+				printf("æ­å–œä½ ï¼Œä½ èµ¢äº†ï¼ï¼ï¼");
 			putchar('\n');
 		}
 	}
@@ -999,7 +999,7 @@ void aibattle()
 	{
 		pos(0, 14);
 		putchar('\n');
-		printf("\aÆ½¾Ö£¡£¡£¡");
+		printf("\aå¹³å±€ï¼ï¼ï¼");
 		putchar('\n');
 	}
 }
@@ -1011,11 +1011,11 @@ void main()
 
 	putchar('\n');
 	putchar('\n');
-	puts("          ¾®×ÖÆå1.0          ×÷Õß--xyz");
-	puts("ÓÎÏ·Ä£Ê½£º1---Íæ¼Ò¶ÔÕ½£»2---AIÌôÕ½");
+	puts("          äº•å­—æ£‹1.0          ä½œè€…--xyz");
+	puts("æ¸¸æˆæ¨¡å¼ï¼š1---ç©å®¶å¯¹æˆ˜ï¼›2---AIæŒ‘æˆ˜");
 	do
 	{
-		printf("ÇëÑ¡Ôñ£º");
+		printf("è¯·é€‰æ‹©ï¼š");
 		scanf("%d", &i);
 	} while (i != 1 && i != 2);
 	Sleep(500);
@@ -1026,7 +1026,7 @@ void main()
 		{
 			system("cls");
 			stdbattle();
-			printf("Òª¼ÌĞøÂğ£¿¼ÌĞø---0£¬ÍË³ö---9£º");
+			printf("è¦ç»§ç»­å—ï¼Ÿç»§ç»­---0ï¼Œé€€å‡º---9ï¼š");
 			scanf("%d", &con);
 		} while (con == 0);
 	}
@@ -1036,7 +1036,7 @@ void main()
 		{
 			system("cls");
 			aibattle();
-			printf("Òª¼ÌĞøÂğ£¿¼ÌĞø---0£¬ÍË³ö---9£º");
+			printf("è¦ç»§ç»­å—ï¼Ÿç»§ç»­---0ï¼Œé€€å‡º---9ï¼š");
 			scanf("%d", &con);
 		} while (con == 0);
 	}

@@ -1,0 +1,22 @@
+﻿  1.c
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(101,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(103,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(106,21): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(112,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(114,9): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(126,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(145,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(147,9): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(173,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(93,6): warning C4101: 'c': unreferenced local variable
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(1699,17): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(1709,17): warning C4018: '>': signed/unsigned mismatch
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(1340): warning C4715: 'rmove': not all control paths return a value
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(982): warning C4715: 'move': not all control paths return a value
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(1161): warning C4715: 'lmove': not all control paths return a value
+C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\俄罗斯方块\1.c(1637): warning C4715: 'transform': not all control paths return a value
+  All 41 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  俄罗斯方块.vcxproj -> C:\Users\xyz11\OneDrive - University of Manchester\Programme\C\xyzGame\俄罗斯方块\Release\俄罗斯方块.exe

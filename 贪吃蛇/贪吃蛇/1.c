@@ -14,7 +14,7 @@ unsigned score;
 unsigned add;
 int ipause;
 
-typedef struct {        //Íæ¼ÒĞÅÏ¢
+typedef struct {        //ç©å®¶ä¿¡æ¯
 	char name[11];
 	unsigned score;
 	char date[7];
@@ -23,7 +23,7 @@ typedef struct {        //Íæ¼ÒĞÅÏ¢
 
 player prescore;
 
-void pos(int x, int y)                    //ÉèÖÃ¹â±êÎ»ÖÃ
+void pos(int x, int y)                    //è®¾ç½®å…‰æ ‡ä½ç½®
 {
 	COORD POS;
 	POS.X = x;
@@ -32,30 +32,30 @@ void pos(int x, int y)                    //ÉèÖÃ¹â±êÎ»ÖÃ
 	SetConsoleCursorPosition(hOut, POS);
 }
 
-typedef struct SNAKE{                   //ÉßÉí½á¹¹Ìå
+typedef struct SNAKE {                   //è›‡èº«ç»“æ„ä½“
 	int x;
 	int y;
-	struct SNAKE *next;
+	struct SNAKE* next;
 }snake;
 
-snake *head;
-snake *food;
+snake* head;
+snake* food;
 
 void gamecircle();
 
-void HideCursor()                      //Òş²Ø¹â±ê
+void HideCursor()                      //éšè—å…‰æ ‡
 {
 	CONSOLE_CURSOR_INFO cursor_info = { 1, 0 };
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
 }
 
-void DisplayCursor()                 //ÏÔÊ¾¹â±ê
+void DisplayCursor()                 //æ˜¾ç¤ºå…‰æ ‡
 {
 	CONSOLE_CURSOR_INFO cursor_info = { 1, 1 };
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
 }
 
-void pause()    //ÔİÍ£ÓÎÏ·
+void pause()    //æš‚åœæ¸¸æˆ
 {
 	if (ipause)
 	{
@@ -68,7 +68,7 @@ void pause()    //ÔİÍ£ÓÎÏ·
 	}
 }
 
-void window()                    //ÉèÖÃ¿ØÖÆÌ¨
+void window()                    //è®¾ç½®æ§åˆ¶å°
 {
 	system("mode con cols=150 lines=40");
 }
@@ -76,23 +76,23 @@ void window()                    //ÉèÖÃ¿ØÖÆÌ¨
 void welcome()
 {
 	pos(15, 10);
-	printf("»¶Ó­À´µ½Ì°³ÔÉßv0.9");
+	printf("æ¬¢è¿æ¥åˆ°è´ªåƒè›‡v0.9");
 	pos(25, 11);
-	printf("×÷Õß£ºxyz\n\n");
+	printf("ä½œè€…ï¼šxyz\n\n");
 	system("pause");
 	system("cls");
 
 	pos(15, 10);
-	printf("ÇëÍ¨¹ı·½Ïò¼ü\"¡ü¡ı¡û¡ú\"¿ØÖÆÉßÉß£¬°´×¡\"CTRL\"¼ü¿ÉÒÔ³å´ÌÅ¶£¡");
+	printf("è¯·é€šè¿‡æ–¹å‘é”®\"â†‘â†“â†â†’\"æ§åˆ¶è›‡è›‡ï¼ŒæŒ‰ä½\"CTRL\"é”®å¯ä»¥å†²åˆºå“¦ï¼");
 	pos(15, 11);
-	printf("×ÖÄ¸\"Q\"¼ü¼ÓËÙ£¬×ÖÄ¸\"W\"¼ü¼õËÙ£¬°´ÏÂ¿Õ¸ñ¼üÔİÍ£ÓÎÏ·¡£");
+	printf("å­—æ¯\"Q\"é”®åŠ é€Ÿï¼Œå­—æ¯\"W\"é”®å‡é€Ÿï¼ŒæŒ‰ä¸‹ç©ºæ ¼é”®æš‚åœæ¸¸æˆã€‚");
 	pos(15, 13);
-	printf("ÏÖÔÚ¾Í¿ªÊ¼°É£¡\n\n");
+	printf("ç°åœ¨å°±å¼€å§‹å§ï¼\n\n");
 
 	system("pause");
 }
 
-void printboundary()                  //´òÓ¡ÓÎÏ·±ß¿ò
+void printboundary()                  //æ‰“å°æ¸¸æˆè¾¹æ¡†
 {
 	int i;
 
@@ -101,27 +101,27 @@ void printboundary()                  //´òÓ¡ÓÎÏ·±ß¿ò
 	for (i = 0; i < 100; i += 2)
 	{
 		pos(i, 0);
-		printf("¡ö");
+		printf("â– ");
 		pos(i, 34);
-		printf("¡ö");
+		printf("â– ");
 	}
 	for (i = 0; i < 35; i++)
 	{
 		pos(0, i);
-		printf("¡ö");
+		printf("â– ");
 		pos(98, i);
-		printf("¡ö");
+		printf("â– ");
 	}
 	putchar('\n');
 }
 
-void printsnake()                     //´òÓ¡³õÊ¼Éß
+void printsnake()                     //æ‰“å°åˆå§‹è›‡
 {
 	int i;
-	snake *tail;
+	snake* tail;
 	tail = (snake*)malloc(sizeof(snake));
 
-    tail->x = 24;
+	tail->x = 24;
 	tail->y = 15;
 	tail->next = NULL;
 
@@ -137,14 +137,14 @@ void printsnake()                     //´òÓ¡³õÊ¼Éß
 	while (tail != NULL)
 	{
 		pos(tail->x, tail->y);
-		printf("¡ö");
+		printf("â– ");
 		tail = tail->next;
 	}
 }
 
-int checkfood()                   //¼ì²éÊ³ÎïÊÇ·ñÓëÉßÉíÖØºÏ
+int checkfood()                   //æ£€æŸ¥é£Ÿç‰©æ˜¯å¦ä¸è›‡èº«é‡åˆ
 {
-	snake *check;
+	snake* check;
 	check = head;
 
 	while (check != NULL)
@@ -156,36 +156,36 @@ int checkfood()                   //¼ì²éÊ³ÎïÊÇ·ñÓëÉßÉíÖØºÏ
 	return 0;
 }
 
-void printfood()                   //´òÓ¡Ê³Îï
+void printfood()                   //æ‰“å°é£Ÿç‰©
 {
 	srand((unsigned)time(NULL));
 
 	do
 	{
 		food = (snake*)malloc(sizeof(snake));
-		do  food->x = rand() % (95) + 2; 
+		do  food->x = rand() % (95) + 2;
 		while (food->x % 2 != 0);
 
 		food->y = rand() % (33) + 1;
 	} while (checkfood());
-	
+
 	pos(food->x, food->y);
-	printf("¡ö");
+	printf("â– ");
 }
 
-void swapinfo(player *x, player *y)      //½»»»·ÖÊıĞÅÏ¢ÒÔ¹©ÅÅÃû
+void swapinfo(player* x, player* y)      //äº¤æ¢åˆ†æ•°ä¿¡æ¯ä»¥ä¾›æ’å
 {
 	player temp = *x;
 	*x = *y;
 	*y = temp;
 }
 
-void rank()              //°´µÃ·ÖÅÅÃûÖØĞÂĞ´ÈërankÎÄ¼ş
+void rank()              //æŒ‰å¾—åˆ†æ’åé‡æ–°å†™å…¥rankæ–‡ä»¶
 {
-	FILE *fp;
+	FILE* fp;
 	player grp[20];
-	int n,n1;
-	int i,j;
+	int n, n1;
+	int i, j;
 
 	fp = fopen("1.bin", "r");
 	n = 0;
@@ -214,26 +214,26 @@ void rank()              //°´µÃ·ÖÅÅÃûÖØĞÂĞ´ÈërankÎÄ¼ş
 
 void displayrank();
 
-int EndGame()                    //½áÊøÓÎÏ·
+int EndGame()                    //ç»“æŸæ¸¸æˆ
 {
-	FILE *fp;
+	FILE* fp;
 	player user;
 
 	free(head);
 	pos(110, 8);
-	printf("ÉßÉß²»¸Ê´ËÉú£¬Ñ¡ÔñÁËËÀÍö......");
+	printf("è›‡è›‡ä¸ç”˜æ­¤ç”Ÿï¼Œé€‰æ‹©äº†æ­»äº¡......");
 	pos(110, 10);
-	printf("ÄúµÄµÃ·Ö£º%d", score);
+	printf("æ‚¨çš„å¾—åˆ†ï¼š%d", score);
 	pos(110, 12);
 
 	DisplayCursor();
-	printf("ÄúµÄ´óÃû(Ó¢ÎÄÊäÈë)£º");
+	printf("æ‚¨çš„å¤§å(è‹±æ–‡è¾“å…¥)ï¼š");
 	scanf("%s", &user.name);
 
 	fp = fopen("1.bin", "a");
 
 	time_t current = time(NULL);
-	struct tm *timer = localtime(&current);
+	struct tm* timer = localtime(&current);
 
 	fprintf(fp, "%s %u %d%02d%02d %02d%02d%02d\n", user.name, score, timer->tm_year - 100, timer->tm_mon + 1, timer->tm_mday, timer->tm_hour, timer->tm_min, timer->tm_sec);
 	fclose(fp);
@@ -247,9 +247,9 @@ int EndGame()                    //½áÊøÓÎÏ·
 	displayrank();
 }
 
-void displayrank()            //ÏÔÊ¾ÅÅĞĞ°ñ
+void displayrank()            //æ˜¾ç¤ºæ’è¡Œæ¦œ
 {
-	FILE *fp;
+	FILE* fp;
 	player grp[20];
 	int n;
 	int is = 0;
@@ -258,9 +258,9 @@ void displayrank()            //ÏÔÊ¾ÅÅĞĞ°ñ
 	int con;
 
 	pos(39, 4);
-	printf("ÅÅĞĞ°ñ");
+	printf("æ’è¡Œæ¦œ");
 	pos(20, 6);
-	printf("Ãû´Î      ´óÃû      µÃ·Ö      ÈÕÆÚ      Ê±¼ä");
+	printf("åæ¬¡      å¤§å      å¾—åˆ†      æ—¥æœŸ      æ—¶é—´");
 	fp = fopen("1.bin", "r");
 	n = 0;
 	while (fscanf(fp, "%s%u%s%s", &grp[n].name, &grp[n].score, &grp[n].date, &grp[n].time) == 4)
@@ -283,12 +283,12 @@ void displayrank()            //ÏÔÊ¾ÅÅĞĞ°ñ
 	putchar('\n');
 	putchar('\n');
 	if (is == 1)
-		printf("¹§Ï²Äã£¬µ±Ç°ÅÅÃûµÚ%d£¡£¡\n", num);
+		printf("æ­å–œä½ ï¼Œå½“å‰æ’åç¬¬%dï¼ï¼\n", num);
 	else
-		puts("ºÜ¿ÉÏ§£¬Õâ´ÎÃ»ÓĞÉÏ°ñ£¬ºÍÉßÉß¼ÌĞøÅ¬Á¦°É£¡");
+		puts("å¾ˆå¯æƒœï¼Œè¿™æ¬¡æ²¡æœ‰ä¸Šæ¦œï¼Œå’Œè›‡è›‡ç»§ç»­åŠªåŠ›å§ï¼");
 
 	putchar('\n');
-	printf("Òª¼ÌĞøÓÎÏ·Âğ£¿¼ÌĞø----\'0\'£¬ÍË³ö----\'9\'£º"); 
+	printf("è¦ç»§ç»­æ¸¸æˆå—ï¼Ÿç»§ç»­----\'0\'ï¼Œé€€å‡º----\'9\'ï¼š");
 	scanf("%d", &con);
 
 	if (con == 0)
@@ -297,10 +297,10 @@ void displayrank()            //ÏÔÊ¾ÅÅĞĞ°ñ
 		exit(0);
 }
 
-void move()            //ÉßÔËĞĞ
+void move()            //è›‡è¿è¡Œ
 {
-	snake *nexthead;
-	snake *scan;
+	snake* nexthead;
+	snake* scan;
 	nexthead = (snake*)malloc(sizeof(snake));
 
 	if (status == U)
@@ -309,33 +309,33 @@ void move()            //ÉßÔËĞĞ
 		nexthead->y = head->y - 1;
 		nexthead->next = head;
 
-		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //Í·Ç°ÓĞÊ³Îï
+		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //å¤´å‰æœ‰é£Ÿç‰©
 		{
 			head = nexthead;
 			score += add;
 			free(food);
 			printfood();
-		}			
-		else                   //ÎŞÊ³Îï
+		}
+		else                   //æ— é£Ÿç‰©
 		{
 			head = nexthead;
 			pos(head->x, head->y);
-			printf("¡ö");
+			printf("â– ");
 
 			scan = head;
 
 			while (scan->next->next != NULL)
 			{
-				if ((nexthead->x == scan->next->x) && (nexthead->y == scan->next->y))   //¼ì²éÊÇ·ñ×²µ½×Ô¼º
+				if ((nexthead->x == scan->next->x) && (nexthead->y == scan->next->y))   //æ£€æŸ¥æ˜¯å¦æ’åˆ°è‡ªå·±
 					EndGame();
 				scan = scan->next;
 			}
 
-			if ((nexthead->x == scan->x) && (nexthead->y == scan->y))                  //¼ì²éÊÇ·ñ×²µ½×Ô¼º
+			if ((nexthead->x == scan->x) && (nexthead->y == scan->y))                  //æ£€æŸ¥æ˜¯å¦æ’åˆ°è‡ªå·±
 				EndGame();
 			if ((nexthead->x == scan->next->x) && (nexthead->y == scan->next->y))
 				EndGame();
-			if (nexthead->x == 0 || nexthead->x == 98 || nexthead->y == 0 || nexthead->y == 34)     //¼ì²éÊÇ·ñ×²µ½Ç½
+			if (nexthead->x == 0 || nexthead->x == 98 || nexthead->y == 0 || nexthead->y == 34)     //æ£€æŸ¥æ˜¯å¦æ’åˆ°å¢™
 				EndGame();
 
 			pos(scan->next->x, scan->next->y);
@@ -351,7 +351,7 @@ void move()            //ÉßÔËĞĞ
 		nexthead->y = head->y + 1;
 		nexthead->next = head;
 
-		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //Í·Ç°ÓĞÊ³Îï
+		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //å¤´å‰æœ‰é£Ÿç‰©
 		{
 			head = nexthead;
 			score += add;
@@ -362,7 +362,7 @@ void move()            //ÉßÔËĞĞ
 		{
 			head = nexthead;
 			pos(head->x, head->y);
-			printf("¡ö");
+			printf("â– ");
 
 			scan = head;
 
@@ -393,7 +393,7 @@ void move()            //ÉßÔËĞĞ
 		nexthead->y = head->y;
 		nexthead->next = head;
 
-		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //Í·Ç°ÓĞÊ³Îï
+		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //å¤´å‰æœ‰é£Ÿç‰©
 		{
 			head = nexthead;
 			score += add;
@@ -404,7 +404,7 @@ void move()            //ÉßÔËĞĞ
 		{
 			head = nexthead;
 			pos(head->x, head->y);
-			printf("¡ö");
+			printf("â– ");
 
 			scan = head;
 
@@ -435,7 +435,7 @@ void move()            //ÉßÔËĞĞ
 		nexthead->y = head->y;
 		nexthead->next = head;
 
-		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //Í·Ç°ÓĞÊ³Îï
+		if ((nexthead->x == food->x) && (nexthead->y == food->y)) //å¤´å‰æœ‰é£Ÿç‰©
 		{
 			head = nexthead;
 			score += add;
@@ -446,7 +446,7 @@ void move()            //ÉßÔËĞĞ
 		{
 			head = nexthead;
 			pos(head->x, head->y);
-			printf("¡ö");
+			printf("â– ");
 
 			scan = head;
 
@@ -473,7 +473,7 @@ void move()            //ÉßÔËĞĞ
 	}
 }
 
-void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
+void core()                  //ç”¨æˆ·æ§åˆ¶åŠæ ¸å¿ƒå¾ªç¯
 {
 
 	unsigned tmp;
@@ -486,11 +486,11 @@ void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
 	HideCursor();
 
 	while (1)
-	{ 
+	{
 		pos(110, 10);
-		printf("µ±Ç°µÃ·Ö£º%d", score);
+		printf("å½“å‰å¾—åˆ†ï¼š%d", score);
 
-		if (GetAsyncKeyState(VK_UP) && status != D)             //·½Ïò¿ØÖÆ
+		if (GetAsyncKeyState(VK_UP) && status != D)             //æ–¹å‘æ§åˆ¶
 			status = U;
 		else if (GetAsyncKeyState(VK_DOWN) && status != U)
 			status = D;
@@ -498,9 +498,9 @@ void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
 			status = L;
 		else if (GetAsyncKeyState(VK_RIGHT) && status != L)
 			status = R;
-		else if (GetAsyncKeyState(VK_SPACE))     //ÔİÍ£
+		else if (GetAsyncKeyState(VK_SPACE))     //æš‚åœ
 			pause();
-		else if (GetAsyncKeyState('Q'))                      //¼ÓËÙ
+		else if (GetAsyncKeyState('Q'))                      //åŠ é€Ÿ
 		{
 			if (sleeptime > 50)
 			{
@@ -510,7 +510,7 @@ void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
 			}
 
 		}
-		else if (GetAsyncKeyState('W'))                    //¼õËÙ
+		else if (GetAsyncKeyState('W'))                    //å‡é€Ÿ
 		{
 			sleeptime += 50;
 			if (sleeptime <= 300)
@@ -518,7 +518,7 @@ void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
 		}
 
 		tmp = sleeptime;
-		if (GetAsyncKeyState(VK_CONTROL))        //³å´Ì
+		if (GetAsyncKeyState(VK_CONTROL))        //å†²åˆº
 		{
 			tmp = sleeptime;
 			sleeptime = 50;
@@ -531,7 +531,7 @@ void core()                  //ÓÃ»§¿ØÖÆ¼°ºËĞÄÑ­»·
 	}
 }
 
-void gamecircle()                //ÓÎÏ·Ö÷³ÌĞò
+void gamecircle()                //æ¸¸æˆä¸»ç¨‹åº
 {
 	printboundary();
 	printsnake();
@@ -539,7 +539,7 @@ void gamecircle()                //ÓÎÏ·Ö÷³ÌĞò
 	core();
 }
 
-void main()               //Ö÷º¯Êı
+void main()               //ä¸»å‡½æ•°
 {
 	window();
 	welcome();
